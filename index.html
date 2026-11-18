@@ -61,12 +61,15 @@ z-index: 50;
 .head {
 max-width: 1140px;
 margin: 0 auto;
-padding: 12px 20px;
+padding: 14px 20px;
 display: flex;
 align-items: center;
 justify-content: space-between;
 gap: 16px;
+position: relative;
 }
+
+/* Elite Minimalist Brand Mark */
 .brand {
 display: flex;
 align-items: center;
@@ -74,26 +77,35 @@ gap: 12px;
 text-decoration: none;
 color: inherit;
 }
-.brand img {
-height: 52px;
-width: auto;
-object-fit: contain;
-border-radius: 6px;
-}
-.brand-title {
-font-size: 22px;
+.brand-icon {
+width: 42px;
+height: 42px;
+background: var(--navy);
+color: #ffffff;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
 font-weight: 800;
-line-height: 1.05;
+font-size: 17px;
+letter-spacing: -0.03em;
+box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+}
+.brand-icon span { color: #60a5fa; }
+.brand-title {
+font-size: 20px;
+font-weight: 800;
+line-height: 1.1;
 letter-spacing: -0.02em;
 }
 .brand-title .blue { color: var(--blue); }
 .brand-title .green { color: var(--green); }
 .brand-sub {
 display: block;
-font-size: 10px;
+font-size: 9.5px;
 font-weight: 700;
-letter-spacing: 0.04em;
-color: var(--slate);
+letter-spacing: 0.06em;
+color: var(--muted);
 margin-top: 3px;
 text-transform: uppercase;
 }
@@ -126,7 +138,7 @@ line-height: 1;
 }
 .hamburger:hover { border-color: var(--blue); color: var(--blue); }
 
-/* Mobile Backdrop & Dropdown Drawer with Smooth Transition */
+/* Mobile Backdrop & Dropdown Drawer */
 .mobile-backdrop {
 position: fixed;
 inset: 0;
@@ -300,9 +312,13 @@ box-shadow: 0 0 0 3px rgba(20, 88, 230, 0.1);
 .sector-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
 .sector-tag { background: #fff; border: 1px solid var(--border); padding: 7px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 600; color: var(--slate); }
 
-/* About Grid */
-.about-grid { display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: start; }
-.about-grid img { width: 200px; height: 200px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); background: var(--bg-light); }
+/* About Section */
+.about-card {
+background: #fff;
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 32px;
+}
 
 /* FAQ */
 .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
@@ -351,10 +367,6 @@ nav.desktop-nav { display: none; }
 .hamburger { display: flex; align-items: center; justify-content: center; }
 h1 { font-size: 30px; }
 }
-@media (max-width: 640px) {
-.about-grid { grid-template-columns: 1fr; }
-.about-grid img { width: 140px; height: 140px; }
-}
 </style>
 </head>
 <body id="top">
@@ -364,9 +376,10 @@ Serving the best interests of our clients &nbsp;•&nbsp; <strong>Your adviser i
 </div>
 
 <header>
-<div class="head" style="position: relative;">
+<div class="head">
+<!-- Elite Minimalist Typographic Brand -->
 <a class="brand" href="#top">
-<img src="logo-mark.jpg" alt="Proactive Consultancy logo">
+<div class="brand-icon">P<span>C</span></div>
 <div>
 <div class="brand-title"><span class="blue">Proactive</span> <span class="green">Consultancy</span></div>
 <span class="brand-sub">Numbers Optimised • Taxes Minimised • Carbon Neutral</span>
@@ -692,28 +705,25 @@ Send Enquiry via WhatsApp →
 
 <!-- About Salil -->
 <section id="about" class="alt">
-<div class="container">
-<div class="section-header">
+<div class="container" style="max-width: 800px;">
+<div class="section-header" style="text-align: center; margin-left: auto; margin-right: auto;">
 <h2>About Your Adviser</h2>
 </div>
-<div class="card about-grid">
-<img src="salil.jpg" alt="Salil Patankar, Founder of Proactive Consultancy">
-<div>
-<h3 style="margin:0 0 6px; font-size:22px;">Salil Patankar — Founder</h3>
-<p style="margin:0 0 12px; color:var(--blue); font-weight:600; font-size:14px;">
+<div class="about-card">
+<h3 style="margin:0 0 4px; font-size:22px;">Salil Patankar — Founder</h3>
+<p style="margin:0 0 14px; color:var(--blue); font-weight:600; font-size:14px;">
 30 years advising UK SMEs, entrepreneurs, CIO set-ups, and charities
 </p>
 <p style="margin:0 0 14px; font-size:15px; color:var(--slate);">
 At Proactive Consultancy, you are never handed off to a junior account handler. You deal directly with Salil from your initial discovery conversation through to tax structuring, carbon evidence preparation, and final filing.
 </p>
-<p style="margin:0 0 16px; font-size:14px; color:var(--slate);">
+<p style="margin:0 0 20px; font-size:14px; color:var(--slate);">
 <strong>Community &amp; Network Leadership:</strong> Head of Capital Connect Ecosystems at AJBN Connect (London’s Asian-Jewish B2B network), Founder &amp; Mentor of AJBN iMPACT Lions Club, and Club Secretary of London Fortitude Lions Club.
 </p>
 <div style="display:flex; flex-wrap:wrap; gap:12px;">
 <a class="btn btn-wa btn-sm" href="https://wa.me/447438572350" target="_blank" rel="noopener">WhatsApp: +44 7438 572350</a>
 <a class="btn btn-outline btn-sm" href="mailto:salil@proactiveconsultancy.co.uk">Email Salil</a>
 <a class="btn btn-outline btn-sm" href="https://www.linkedin.com/in/salil-patankar-94892a367/" target="_blank" rel="noopener">LinkedIn Profile</a>
-</div>
 </div>
 </div>
 </div>
