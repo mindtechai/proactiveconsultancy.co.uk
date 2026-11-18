@@ -1,301 +1,789 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proactive Consultancy | Hatch End, Pinner, London</title>
-    <style>
-        :root {
-            --primary: #0A2540;
-            --secondary: #1E3A8A;
-            --accent: #2563EB;
-            --terracotta: #D97706;
-            --green: #059669;
-            --text-dark: #1F2937;
-            --text-light: #6B7280;
-            --bg-light: #F9FAFB;
-            --white: #FFFFFF;
-            --border: #E5E7EB;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proactive Consultancy — Compliant Accounts, Tax Mitigation &amp; PPN 006 Carbon Reporting</title>
+<meta name="description" content="Proactive Consultancy, Hatch End, Pinner. Compliant accounts, legitimate tax planning &amp; mitigation, PPN 006 &amp; NHS Evergreen carbon packs via vsmecap. Advised directly by Salil Patankar, Founder.">
+<style>
+:root {
+--navy: #0f172a;
+--slate: #334155;
+--muted: #64748b;
+--bg-light: #f8fafc;
+--bg-tint: #f1f5ff;
+--border: #e2e8f0;
+--blue: #1458e6;
+--blue-dark: #0f44b8;
+--green: #0a8a3a;
+--wa-green: #16a34a;
+--amber: #d97706;
+--amber-bg: #fffbeb;
+--amber-border: #fcd34d;
+}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+margin: 0;
+padding: 0;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+color: var(--navy);
+background: #ffffff;
+line-height: 1.6;
+-webkit-font-smoothing: antialiased;
+}
 
-        body {
-            color: var(--text-dark);
-            background-color: var(--white);
-            line-height: 1.6;
-        }
+a { color: var(--blue); transition: color 0.15s ease; }
+a:hover { color: var(--blue-dark); }
 
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-        }
+/* Top Trust Ticker */
+.ticker {
+background: var(--navy);
+color: #f8fafc;
+text-align: center;
+padding: 9px 16px;
+font-size: 13px;
+font-weight: 500;
+letter-spacing: 0.01em;
+}
+.ticker strong { color: #93c5fd; font-weight: 700; }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* Sticky Header */
+header {
+position: sticky;
+top: 0;
+background: rgba(255, 255, 255, 0.98);
+backdrop-filter: blur(8px);
+border-bottom: 1px solid var(--border);
+z-index: 50;
+}
+.head {
+max-width: 1140px;
+margin: 0 auto;
+padding: 14px 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 16px;
+position: relative;
+}
 
-        .site-logo img {
-            height: 50px;
-            width: auto;
-            display: block;
-        }
+/* Updated Brand Mark with Full-Color Logo Emblem */
+.brand {
+display: flex;
+align-items: center;
+gap: 12px;
+text-decoration: none;
+color: inherit;
+}
+.brand img {
+height: 44px;
+width: auto;
+display: block;
+}
+.brand-title {
+font-size: 20px;
+font-weight: 800;
+line-height: 1.1;
+letter-spacing: -0.02em;
+}
+.brand-title .blue { color: var(--blue); }
+.brand-title .green { color: var(--green); }
+.brand-sub {
+display: block;
+font-size: 9.5px;
+font-weight: 700;
+letter-spacing: 0.06em;
+color: var(--muted);
+margin-top: 3px;
+text-transform: uppercase;
+}
 
-        nav ul {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
+/* Desktop Navigation */
+nav.desktop-nav {
+display: flex;
+align-items: center;
+gap: 20px;
+font-size: 14px;
+}
+nav.desktop-nav a {
+text-decoration: none;
+color: var(--slate);
+font-weight: 600;
+}
+nav.desktop-nav a:hover { color: var(--blue); }
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
+/* Hamburger Toggle Button */
+.hamburger {
+display: none;
+background: none;
+border: 1px solid var(--border);
+border-radius: 8px;
+padding: 8px 10px;
+cursor: pointer;
+color: var(--navy);
+font-size: 20px;
+line-height: 1;
+}
+.hamburger:hover { border-color: var(--blue); color: var(--blue); }
 
-        nav a:hover {
-            color: var(--accent);
-        }
+/* Mobile Backdrop & Dropdown Drawer */
+.mobile-backdrop {
+position: fixed;
+inset: 0;
+background: rgba(15, 23, 42, 0.4);
+backdrop-filter: blur(2px);
+z-index: 40;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.mobile-backdrop.open {
+opacity: 1;
+visibility: visible;
+}
 
-        .cta-button {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.2s;
-        }
+.mobile-drawer {
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+background: #fff;
+border-bottom: 1px solid var(--border);
+box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
+padding: 0 20px;
+display: flex;
+flex-direction: column;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+z-index: 45;
+}
+.mobile-drawer.open {
+max-height: 380px;
+padding: 20px;
+}
+.mobile-drawer a {
+text-decoration: none;
+color: var(--navy);
+font-weight: 600;
+font-size: 15px;
+padding: 10px 0;
+border-bottom: 1px solid var(--bg-light);
+}
+.mobile-drawer a:last-child { border-bottom: none; }
+.mobile-drawer a:hover { color: var(--blue); }
 
-        .cta-button:hover {
-            background-color: var(--secondary);
-        }
+/* Buttons */
+.btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+padding: 11px 20px;
+border-radius: 8px;
+text-decoration: none;
+font-weight: 600;
+font-size: 14px;
+cursor: pointer;
+border: 1px solid transparent;
+transition: all 0.15s ease;
+}
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--blue-dark); color: #fff; }
+.btn-wa { background: var(--wa-green); color: #fff; }
+.btn-wa:hover { background: #15803d; color: #fff; }
+.btn-outline { background: #fff; color: var(--navy); border-color: var(--border); }
+.btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+.btn-sm { padding: 8px 14px; font-size: 13px; }
 
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-dark);
-        }
+/* Layout & Sections */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+section { padding: 64px 0; }
+section.alt { background: var(--bg-light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
-        /* Hero Section */
-        .hero {
-            padding: 9rem 2rem 5rem;
-            background: linear-gradient(135deg, #F8FAFC 0%, #EEF2F6 100%);
-            border-bottom: 1px solid var(--border);
-        }
+/* Hero */
+.hero {
+padding: 56px 0 64px;
+background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+border-bottom: 1px solid var(--border);
+}
+.hero-grid { display: grid; grid-template-columns: 1.35fr 0.95fr; gap: 36px; align-items: center; }
+.pill {
+display: inline-block;
+background: var(--bg-tint);
+color: var(--blue);
+border: 1px solid #bfdbfe;
+padding: 5px 12px;
+border-radius: 999px;
+font-weight: 700;
+font-size: 12.5px;
+letter-spacing: 0.02em;
+margin-bottom: 14px;
+}
+h1 { font-size: 40px; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 16px; color: var(--navy); }
+.hero-lead { font-size: 17px; color: var(--slate); margin: 0 0 24px; max-width: 600px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.trust-strip { display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; color: var(--muted); font-weight: 500; }
+.trust-strip span::before { content: "✓ "; color: var(--green); font-weight: 700; }
 
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
+/* Cards & Grids */
+.card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04); }
+.card-core { border: 2px solid var(--amber); background: var(--amber-bg); position: relative; }
+.badge-core {
+display: inline-block;
+background: var(--amber);
+color: #fff;
+font-size: 11px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+padding: 3px 8px;
+border-radius: 4px;
+margin-bottom: 10px;
+}
 
-        .hero-content h1 {
-            font-size: 2.8rem;
-            line-height: 1.2;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
+.section-header { max-width: 720px; margin-bottom: 32px; }
+.section-header h2 { font-size: 28px; letter-spacing: -0.02em; margin: 0 0 8px; }
+.section-header p { margin: 0; color: var(--slate); font-size: 16px; }
 
-        .hero-content p {
-            font-size: 1.15rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.grid-4 .card { display: flex; flex-direction: column; justify-content: space-between; }
+.grid-4 h3 { margin: 0 0 10px; font-size: 18px; }
+.grid-4 ul { margin: 0 0 20px; padding-left: 18px; color: var(--slate); font-size: 14px; }
+.grid-4 li { margin-bottom: 6px; }
 
-        .hero-badge {
-            display: inline-block;
-            background: #E0E7FF;
-            color: var(--secondary);
-            padding: 0.35rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 
-        .hero-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border: 1px solid var(--border);
-        }
+/* Interactive Tender Checker */
+.checker-box { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px; }
+.checker-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+.check-btn {
+text-align: left;
+padding: 14px;
+border: 1px solid var(--border);
+border-radius: 8px;
+background: var(--bg-light);
+cursor: pointer;
+font-family: inherit;
+font-size: 13.5px;
+color: var(--navy);
+transition: all 0.15s ease;
+}
+.check-btn:hover, .check-btn.active { border-color: var(--blue); background: var(--bg-tint); }
+.check-btn strong { display: block; margin-bottom: 4px; color: var(--blue); }
+.checker-result { padding: 16px; border-radius: 8px; background: var(--bg-tint); border-left: 4px solid var(--blue); font-size: 14px; display: none; }
+.checker-result.visible { display: block; }
 
-        .hero-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
+/* Enquiry Form Styles */
+.form-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 32px; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05); }
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.form-group.full { grid-column: span 2; }
+.form-group label { font-size: 13.5px; font-weight: 600; color: var(--navy); }
+.form-group input, .form-group select, .form-group textarea {
+padding: 11px 14px;
+border: 1px solid var(--border);
+border-radius: 8px;
+font-family: inherit;
+font-size: 14px;
+color: var(--navy);
+background: #fff;
+transition: border-color 0.15s ease;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+outline: none;
+border-color: var(--blue);
+box-shadow: 0 0 0 3px rgba(20, 88, 230, 0.1);
+}
 
-        /* Services Section */
-        .services {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/* Sector Pills */
+.sector-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.sector-tag { background: #fff; border: 1px solid var(--border); padding: 7px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 600; color: var(--slate); }
 
-        .section-title {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 4rem;
-        }
+/* About Section */
+.about-card {
+background: #fff;
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 32px;
+}
 
-        .section-title h2 {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
+/* FAQ */
+.faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
+.faq summary {
+font-weight: 700;
+cursor: pointer;
+font-size: 15.5px;
+list-style: none;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.faq summary::after { content: "+"; font-size: 20px; color: var(--blue); font-weight: 400; }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin: 12px 0 0; color: var(--slate); font-size: 14.5px; }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-        }
+/* Footer */
+footer { background: var(--navy); color: #cbd5e1; padding: 48px 0 32px; font-size: 14px; }
+footer a { color: #93c5fd; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; padding-bottom: 28px; border-bottom: 1px solid #1e293b; }
+.foot-bottom { padding-top: 20px; font-size: 12.5px; color: #94a3b8; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
 
-        .service-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+/* Floating Actions */
+.float { position: fixed; right: 18px; bottom: 18px; display: flex; flex-direction: column; gap: 10px; z-index: 60; }
+.float a {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #fff;
+text-decoration: none;
+box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+.float .wa { background: var(--wa-green); }
+.float .top { background: var(--navy); font-weight: 700; font-size: 18px; }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
+.disclaimer { font-size: 12.5px; color: var(--muted); margin-top: 12px; }
 
-        .service-card h3 {
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-            font-size: 1.25rem;
-        }
-
-        .service-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 3rem 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        footer p {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-            .mobile-toggle {
-                display: block;
-            }
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-        }
-    </style>
+@media (max-width: 960px) {
+.hero-grid, .grid-4, .grid-2, .checker-options, .form-grid, .foot-grid { grid-template-columns: 1fr; }
+.form-group.full { grid-column: span 1; }
+nav.desktop-nav { display: none; }
+.hamburger { display: flex; align-items: center; justify-content: center; }
+h1 { font-size: 30px; }
+}
+</style>
 </head>
-<body>
+<body id="top">
 
-    <header>
-        <div class="nav-container">
-            <div class="site-logo">
-                <img src="logo.png" alt="Proactive Consultancy Logo" />
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact" class="cta-button">Enquire Now</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-toggle" aria-label="Toggle menu">&#9776;</button>
-        </div>
-    </header>
+<div class="ticker">
+Serving the best interests of our clients &nbsp;•&nbsp; <strong>Your adviser is Salil, Founder</strong> — Direct partner-level advice from first call to filing
+</div>
 
-    <main>
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <span class="hero-badge">Hatch End, Pinner, London</span>
-                    <h1>Numbers Optimised. Taxes Minimised. Carbon Neutral.</h1>
-                    <p>Over 30 years of expert financial strategy, UK tax compliance, and modern ESG advisory for ambitious SMEs and property investors.</p>
-                    <a href="#contact" class="cta-button" style="padding: 0.8rem 1.6rem; font-size: 1rem;">Book a Consultation</a>
-                </div>
-                <div class="hero-card">
-                    <h3>Proactive Advisory</h3>
-                    <p>Tailored financial oversight designed to safeguard your wealth, streamline corporate reporting, and prepare your business for public and private tenders.</p>
-                </div>
-            </div>
-        </section>
+<header>
+<div class="head">
+<!-- Full-Color Logo Emblem Brand Mark -->
+<a class="brand" href="#top">
+<img src="logo.png" alt="Proactive Consultancy Logo">
+<div>
+<div class="brand-title"><span class="blue">Proactive</span> <span class="green">Consultancy</span></div>
+<span class="brand-sub">Numbers Optimised • Taxes Minimised • Carbon Neutral</span>
+</div>
+</a>
 
-        <section id="services" class="services">
-            <div class="section-title">
-                <h2>Core Service Packs</h2>
-                <p>Comprehensive accounting and compliance structures built for modern enterprise.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Compliant Pack</h3>
-                    <p>Essential statutory accounts, Corporation Tax returns, and HMRC compliance management for established limited companies.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Tax-Smart Pack</h3>
-                    <p>Proactive tax planning covering Capital Allowances, CGT mitigation, and structural efficiency reviews.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Tender-Ready Pack</h3>
-                    <p>Comprehensive corporate readiness checks ensuring your financials meet rigorous public and private procurement standards.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Growth & ESG (vsmecap)</h3>
-                    <p>Carbon accounting and PPN 006 compliance integration to position your enterprise for sustainable supply chain contracts.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+<!-- Desktop Nav -->
+<nav class="desktop-nav">
+<a href="#services">4 Service Packs</a>
+<a href="#tender">Tender-Ready (PPN 006)</a>
+<a href="#tax">Tax Mitigation</a>
+<a href="#contact">Enquire</a>
+<a href="#about">About Salil</a>
+<a href="#faq">FAQ</a>
+</nav>
 
-    <footer id="contact">
-        <p>&copy; 2026 Proactive Consultancy. Registered in the United Kingdom. All rights reserved.</p>
-    </footer>
+<div style="display: flex; align-items: center; gap: 10px;">
+<a class="btn btn-wa btn-sm" href="https://wa.me/447438572350?text=Hello%20Salil%2C%20I%20would%20like%20to%20enquire%20about%20Proactive%20Consultancy." target="_blank" rel="noopener">
+WhatsApp Us
+</a>
+<button class="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+☰
+</button>
+</div>
 
-</body>
-</html>
+<!-- Mobile Dropdown Drawer -->
+<div id="mobileDrawer" class="mobile-drawer">
+<a href="#services" onclick="toggleMobileMenu()">4 Service Packs</a>
+<a href="#tender" onclick="toggleMobileMenu()">Tender-Ready (PPN 006)</a>
+<a href="#tax" onclick="toggleMobileMenu()">Tax Mitigation</a>
+<a href="#contact" onclick="toggleMobileMenu()">Enquire Callback</a>
+<a href="#about" onclick="toggleMobileMenu()">About Salil</a>
+<a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
+</div>
+</div>
+</header>
+
+<!-- Mobile Backdrop Overlay -->
+<div id="mobileBackdrop" class="mobile-backdrop" onclick="toggleMobileMenu()"></div>
+
+<!-- Hero Section -->
+<div class="hero">
+<div class="container hero-grid">
+<div>
+<span class="pill">AI-Driven Growth Strategists &amp; Tax Advisers • Hatch End, Pinner</span>
+<h1>Compliant accounts. Legitimate tax mitigation. Credible carbon reporting.</h1>
+<p class="hero-lead">
+Deliberately small and personal. We help owner-managed businesses, property investors, and public-sector subcontractors stay compliant, reduce tax legitimately, and win Council &amp; NHS tenders.
+</p>
+<div class="hero-actions">
+<a class="btn btn-wa" href="https://wa.me/447438572350?text=Hello%20Salil%2C%20I%27d%20like%20to%20discuss%20my%20business%20requirements." target="_blank" rel="noopener">
+WhatsApp Business: +44 7438 572350
+</a>
+<a class="btn btn-outline" href="mailto:salil@proactiveconsultancy.co.uk">
+salil@proactiveconsultancy.co.uk
+</a>
+</div>
+<div class="trust-strip">
+<span>Direct Founder Access</span>
+<span>Fixed-Scope Written Quotes</span>
+<span>Harrow, Brent, Hillingdon &amp; Greater London</span>
+</div>
+</div>
+
+<!-- Featured Core Callout Card -->
+<div class="card card-core">
+<span class="badge-core">Core Specialist Service</span>
+<h3 style="margin:0 0 8px; font-size:20px;">Tender-Ready: Council &amp; NHS Contractors</h3>
+<p style="margin:0 0 14px; font-size:14.5px; color:var(--slate);">
+Bidding for a Council or NHS contract — or supplying a Tier 1 contractor? Get your <strong>PPN 006 Carbon Reduction Plan</strong> and <strong>NHS Evergreen</strong> pack built directly from your utility bills via <strong>vsmecap</strong>.
+</p>
+<div style="background:#fff; border:1px solid var(--amber-border); border-radius:8px; padding:12px; font-size:13px; margin-bottom:16px;">
+<strong>Evidence Vault via vsmecap:</strong> Reads meter data, applies UK DESNZ emission factors, and generates a locked evidence trail with a SHA-256 fingerprint.
+</div>
+<a class="btn btn-primary" style="width:100%;" href="#tender">Check Your Tender Requirements →</a>
+<p class="disclaimer" style="margin-bottom:0;">Preparation aid, not assurance, audit or advice. No guarantee of buyer acceptance or tender win.</p>
+</div>
+</div>
+</div>
+
+<!-- 4 Service Packs -->
+<section id="services">
+<div class="container">
+<div class="section-header">
+<h2>Services — 4 Structured Packs</h2>
+<p>Clear, scoped support tailored to your stage of business — from statutory compliance to winning major public-sector contracts.</p>
+</div>
+
+<div class="grid-4">
+<div class="card">
+<div>
+<h3>1. Compliant Pack</h3>
+<ul>
+<li>Statutory Annual Accounts</li>
+<li>Corporation Tax (CT600)</li>
+<li>Self Assessment Returns</li>
+<li>VAT Returns &amp; Payroll</li>
+<li>Companies House Filings</li>
+</ul>
+</div>
+<a class="btn btn-outline btn-sm" href="https://wa.me/447438572350?text=Hello%20Salil%2C%20I%27m%20interested%20in%20the%20Compliant%20Pack." target="_blank" rel="noopener">Enquire on WhatsApp</a>
+</div>
+
+<div class="card">
+<div>
+<h3>2. Tax-Smart Pack</h3>
+<ul>
+<li>Pre-Year-End Tax Reviews</li>
+<li>Dividend &amp; Remuneration Mix</li>
+<li>Pension Relief Structuring</li>
+<li>Property Capital Gains Tax</li>
+<li>HMRC Enquiry Support</li>
+</ul>
+</div>
+<a class="btn btn-outline btn-sm" href="https://wa.me/447438572350?text=Hello%20Salil%2C%20I%27m%20interested%20in%20the%20Tax-Smart%20Pack." target="_blank" rel="noopener">Enquire on WhatsApp</a>
+</div>
+
+<div class="card card-core">
+<div>
+<span class="badge-core">Most Requested</span>
+<h3>3. Tender-Ready Pack</h3>
+<ul>
+<li>PPN 006 Carbon Reduction Plan</li>
+<li>NHS Evergreen Assessment Pack</li>
+<li>Scope 1, 2 &amp; 5 Scope 3 Metrics</li>
+<li>DESNZ-Aligned Evidence Vault</li>
+<li>Council &amp; Tier 1 Supplier Ready</li>
+</ul>
+</div>
+<a class="btn btn-primary btn-sm" href="https://wa.me/447438572350?text=Hello%20Salil%2C%20I%20need%20a%20Tender-Ready%20PPN%20006%20%2F%20NHS%20Evergreen%20pack." target="_blank" rel="noopener">Scope Your Pack</a>
+</div>
+
+<div class="card">
+<div>
+<h3>4. Growth Pack</h3>
+<ul>
+<li>Fractional CFO Advisory</li>
+<li>AI &amp; Workflow Automation</li>
+<li>Cashflow &amp; Margin Modelling</li>
+<li>Pricing &amp; Fee Structuring</li>
+<li>Management Reporting</li>
+</ul>
+</div>
+<a class="btn btn-outline btn-sm" href="https://wa.me/447438572350?text=Hello%20Salil%2C%20I%27m%20interested%20in%20the%20Growth%20Pack." target="_blank" rel="noopener">Enquire on WhatsApp</a>
+</div>
+</div>
+
+<p class="disclaimer">
+Also available: Estate Planning via <strong>Finawis</strong> and specialist cross-border/NRI tax advisory via partner firms (initial enquiries via Salil; engagement contracts directly with the specialist partner).
+</p>
+</div>
+</section>
+
+<!-- Tender-Ready Guidance & Interactive Tool -->
+<section id="tender" class="alt">
+<div class="container">
+<div class="section-header">
+<h2>Tender-Ready Guidance — Council &amp; NHS</h2>
+<p><strong>Crucial rule:</strong> PPN 006 is triggered by a <strong>contract value over £5m per year — NOT your company’s turnover</strong>. Even a £1m–£2m turnover subcontractor can be required to provide a compliant Carbon Reduction Plan if sitting inside a Tier 1 supply chain.</p>
+</div>
+
+<div class="grid-2">
+<div class="card">
+<h3>PPN 006 Carbon Reduction Plans</h3>
+<p style="font-size:14.5px; color:var(--slate);">Required for central government, local authority, and major public procurement tenders. Must be published on your website, director-signed, and commit to Net Zero by 2050.</p>
+<ul style="font-size:14px; color:var(--slate); padding-left:18px;">
+<li><strong>Scope 1 &amp; 2:</strong> Direct fuel, company vehicles, and purchased electricity/gas.</li>
+<li><strong>5 Required Scope 3 Categories:</strong> Upstream transport, waste generated in operations, business travel, employee commuting, and downstream transport.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>NHS Evergreen &amp; Evidence Vault</h3>
+<p style="font-size:14.5px; color:var(--slate);">NHS suppliers face escalating sustainability maturity thresholds (Level 1 minimum, higher for larger frameworks) alongside Net Zero, Modern Slavery, and Social Value commitments.</p>
+<p style="font-size:14px; color:var(--slate); margin-bottom:0;">
+<strong>Proactive is the service; vsmecap is the tool.</strong> We extract your utility bill data via <code>vsmecap.co.uk</code> to build an audit-ready evidence trail (<code>vsmecap.com</code> supports enterprise buyers, Tier 1s, and financial institutions).
+</p>
+</div>
+</div>
+
+<!-- Interactive Quick Check -->
+<div class="checker-box">
+<h3 style="margin:0 0 4px; font-size:17px;">Quick Self-Check: Which Tender Pack Do You Need?</h3>
+<p style="margin:0; font-size:13.5px; color:var(--muted);">Select your situation below to see what buyers typically ask for:</p>
+<div class="checker-options">
+<button type="button" class="check-btn" onclick="showTenderResult('tier1', this)">
+<strong>Subcontractor to a Tier 1</strong>
+Tier 1 prime contractor has requested your carbon data or PPN 006.
+</button>
+<button type="button" class="check-btn" onclick="showTenderResult('nhs', this)">
+<strong>NHS Supplier / Healthcare</strong>
+Bidding for NHS trusts, ICBs, or clinical/estates frameworks.
+</button>
+<button type="button" class="check-btn" onclick="showTenderResult('council', this)">
+<strong>Local Council Tender</strong>
+Bidding for Harrow, Brent, Hillingdon, or London borough contracts.
+</button>
+</div>
+<div id="tender-result" class="checker-result"></div>
+</div>
+<p class="disclaimer">Preparation aid, not assurance, audit or advice. No guarantee of buyer acceptance or tender win.</p>
+</div>
+</section>
+
+<!-- Tax Planning & Mitigation -->
+<section id="tax">
+<div class="container">
+<div class="grid-2" style="align-items:center;">
+<div>
+<div class="section-header" style="margin-bottom:16px;">
+<h2>Tax Planning &amp; Mitigation</h2>
+<p>Forward-looking tax structuring carried out <em>before</em> your accounting year or 5 April tax year closes — never a last-minute rush in January.</p>
+</div>
+<ul style="font-size:15px; color:var(--slate); padding-left:18px; margin-bottom:20px;">
+<li><strong>Forward Tax Planning:</strong> In-year and pre-5 April written tax action plans.</li>
+<li><strong>Profit Extraction:</strong> Optimal salary, dividend, and employer pension mix.</li>
+<li><strong>Property &amp; CGT:</strong> Capital Gains Tax planning for landlords and property companies.</li>
+<li><strong>Compliance &amp; Defence:</strong> Corporation Tax (CT600), Self Assessment, and HMRC Enquiry support.</li>
+</ul>
+</div>
+
+<div class="card" style="background:var(--bg-light);">
+<h3 style="margin-top:0;">Transparent Advisory Fees</h3>
+<p style="font-size:14.5px; color:var(--slate);">
+<strong>Tax planning is a dedicated paid advisory service — scoped and quoted in writing before work begins.</strong>
+</p>
+<p style="font-size:14px; color:var(--slate);">
+We do not offer speculative "free tax calculations" or unrealistic tax-saving promises. Every recommendation is legitimate, commercially grounded, and documented clearly.
+</p>
+<p class="disclaimer" style="margin-bottom:16px;">
+Specialist cross-border / NRI matters (UK-India, FIG regime, QROPS, worldwide disclosure, complex IHT) are handled via specialist partner firms — initial enquiries via Salil first.
+</p>
+<a class="btn btn-primary btn-sm" href="https://wa.me/447438572350?text=Hello%20Salil%2C%20I%27d%20like%20to%20book%20a%20scoped%20tax%20planning%20review." target="_blank" rel="noopener">Request a Tax Review Quote</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Sectors & Coverage -->
+<section id="sectors" class="alt">
+<div class="container">
+<div class="section-header">
+<h2>Sectors &amp; Local Coverage</h2>
+<p>Working with specialist trades, healthcare professionals, property owners, and public-sector suppliers across North West London and the Home Counties.</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3 style="margin-top:0;">Core Client Sectors</h3>
+<div class="sector-tags">
+<span class="sector-tag">Construction &amp; Groundworks</span>
+<span class="sector-tag">Electrical, HVAC &amp; Plumbing</span>
+<span class="sector-tag">Tree Surgeons &amp; Landscaping</span>
+<span class="sector-tag">Scaffolding, Painters &amp; Joiners</span>
+<span class="sector-tag">Commercial Cleaning</span>
+<span class="sector-tag">Property Companies &amp; Landlords</span>
+<span class="sector-tag">Estate Agents</span>
+<span class="sector-tag">Vets, Dentists, GPs &amp; Pharmacists</span>
+<span class="sector-tag">IT &amp; AI Contractors</span>
+<span class="sector-tag">Council &amp; NHS Suppliers</span>
+</div>
+</div>
+
+<div class="card" style="background:var(--bg-tint); border-color:#bfdbfe;">
+<h3 style="margin-top:0; color:var(--blue);">Areas We Serve — From Hatch End, Pinner</h3>
+<p style="margin:0 0 8px; font-size:14.5px;">
+<strong>Council &amp; NHS Tender Focus:</strong> Harrow, Brent, Hillingdon, and wider Greater London.
+</p>
+<p style="margin:0; font-size:14.5px; color:var(--slate);">
+<strong>Accounts, Tax &amp; Carbon Reporting (In-Person &amp; Online):</strong> Harrow, Hillingdon, Brent, Ealing, Barnet, Hertfordshire (Watford, Bushey, Rickmansworth, St Albans, Elstree), and Berkshire (Slough, Windsor, Maidenhead).
+</p>
+</div>
+</div>
+</section>
+
+<!-- Interactive Enquiry & Scope Callback Form -->
+<section id="contact">
+<div class="container" style="max-width: 800px;">
+<div class="section-header" style="text-align: center; margin-left: auto; margin-right: auto;">
+<h2>Enquire or Request a Scope Callback</h2>
+<p>Fill in your details below to send your requirement straight to Salil via WhatsApp. We respond promptly with fixed, transparent fee quotes.</p>
+</div>
+
+<div class="form-card">
+<form id="enquiryForm" onsubmit="submitEnquiry(event)">
+<div class="form-grid">
+<div class="form-group">
+<label for="clientName">Your Name *</label>
+<input type="text" id="clientName" required placeholder="e.g. John Smith">
+</div>
+<div class="form-group">
+<label for="clientPhone">Phone Number *</label>
+<input type="tel" id="clientPhone" required placeholder="e.g. 07700 900000">
+</div>
+</div>
+<div class="form-grid">
+<div class="form-group">
+<label for="clientCompany">Company / Business Name</label>
+<input type="text" id="clientCompany" placeholder="e.g. Smith Groundworks Ltd">
+</div>
+<div class="form-group">
+<label for="servicePack">Select Service Pack *</label>
+<select id="servicePack" required>
+<option value="" disabled selected>-- Choose your requirement --</option>
+<option value="Compliant Pack (Accounts & Tax)">1. Compliant Pack (Accounts, CT600, VAT)</option>
+<option value="Tax-Smart Pack (Planning & CGT)">2. Tax-Smart Pack (Planning &amp; CGT)</option>
+<option value="Tender-Ready Pack (PPN 006 / NHS)">3. Tender-Ready Pack (PPN 006 / NHS Evergreen)</option>
+<option value="Growth Pack (CFO & AI Advisory)">4. Growth Pack (Fractional CFO &amp; AI Advisory)</option>
+<option value="General Tax / Accounting Enquiry">General Tax / Accounting Enquiry</option>
+</select>
+</div>
+</div>
+<div class="form-group full">
+<label for="clientMessage">Brief Details / Notes</label>
+<textarea id="clientMessage" rows="4" placeholder="Tell us a little about your business, turnover, or tender deadline..."></textarea>
+</div>
+<button type="submit" class="btn btn-wa" style="width: 100%; justify-content: center; font-size: 15px; padding: 14px;">
+Send Enquiry via WhatsApp →
+</button>
+</form>
+</div>
+</div>
+</section>
+
+<!-- About Salil -->
+<section id="about" class="alt">
+<div class="container" style="max-width: 800px;">
+<div class="section-header" style="text-align: center; margin-left: auto; margin-right: auto;">
+<h2>About Your Adviser</h2>
+</div>
+<div class="about-card">
+<h3 style="margin:0 0 4px; font-size:22px;">Salil Patankar — Founder</h3>
+<p style="margin:0 0 14px; color:var(--blue); font-weight:600; font-size:14px;">
+30 years advising UK SMEs, entrepreneurs, CIO set-ups, and charities
+</p>
+<p style="margin:0 0 14px; font-size:15px; color:var(--slate);">
+At Proactive Consultancy, you are never handed off to a junior account handler. You deal directly with Salil from your initial discovery conversation through to tax structuring, carbon evidence preparation, and final filing.
+</p>
+<p style="margin:0 0 20px; font-size:14px; color:var(--slate);">
+<strong>Community &amp; Network Leadership:</strong> Head of Capital Connect Ecosystems at AJBN Connect (London’s Asian-Jewish B2B network), Founder &amp; Mentor of AJBN iMPACT Lions Club, and Club Secretary of London Fortitude Lions Club.
+</p>
+<div style="display:flex; flex-wrap:wrap; gap:12px;">
+<a class="btn btn-wa btn-sm" href="https://wa.me/447438572350" target="_blank" rel="noopener">WhatsApp: +44 7438 572350</a>
+<a class="btn btn-outline btn-sm" href="mailto:salil@proactiveconsultancy.co.uk">Email Salil</a>
+<a class="btn btn-outline btn-sm" href="https://www.linkedin.com/in/salil-patankar-94892a367/" target="_blank" rel="noopener">LinkedIn Profile</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+<div class="container">
+<div class="section-header">
+<h2>Frequently Asked Questions</h2>
+</div>
+<div class="faq">
+<details open>
+<summary>Do I need PPN 006 if my turnover is under £5m?</summary>
+<p>Yes, potentially. PPN 006 is triggered by the <strong>contract value</strong> (over £5m per year), not your company’s annual turnover. If you are a subcontractor in the supply chain for a £5m+ Council, NHS, or government contract, the Tier 1 contractor can require a PPN 006 Carbon Reduction Plan from you.</p>
+</details>
+<details>
+<summary>Do you work with property companies, private landlords, and estate agents?</summary>
+<p>Yes. We handle statutory accounts, landlord tax compliance, Capital Gains Tax planning on property disposals, and PPN 006 / carbon reporting packs where estate agents or property firms tender for public-sector frameworks.</p>
+</details>
+<details>
+<summary>Is tax planning guaranteed to save me money?</summary>
+<p>No ethical adviser can guarantee tax savings before reviewing your figures. We carry out legitimate, forward-looking tax planning in writing, scoped and quoted transparently upfront.</p>
+</details>
+<details>
+<summary>How does the carbon reporting process work with vsmecap?</summary>
+<p>You provide your electricity, gas, and relevant operational records. Proactive Consultancy advises and structures your submission using <strong>vsmecap</strong>, which extracts meter data, applies official UK DESNZ conversion factors, and generates a locked evidence pack for your tender.</p>
+</details>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+<div class="foot-grid">
+<div>
+<strong style="color:#fff; font-size:16px;">Proactive Consultancy</strong>
+<p style="margin:8px 0 0; color:#94a3b8;">
+Hatch End, Pinner, London<br>
+Compliant accounts. Legitimate tax mitigation. Credible carbon reporting.
+</p>
+</div>
+<div>
+<strong style="color:#fff;">Direct Contact</strong>
+<p style="margin:8px 0 0;">
+WhatsApp: <a href="https://wa.me/447438572350" target="_blank" rel="noopener">+44 7438 572350</a><br>
+Email: <a href="mailto:salil@proactiveconsultancy.co.uk">salil@proactiveconsultancy.co.uk</a><br>
+LinkedIn: <a href="https://www.linkedin.com/in/salil-patankar-94892a367/" target="_blank" rel="noopener">Salil Patankar</a>
+</p>
+</div>
+<div>
+<strong style="color:#fff;">Quick Links</strong>
+<p style="margin:8px 0 0;">
+<a href="#services">4 Service Packs</a><br>
+<a href="#tender">Tender-Ready (PPN 006)</a><br>
+<a href="#tax">Tax Planning</a><br>
+<a href="#contact">Enquire Form</a><br>
+<a href="#faq">FAQ</a>
+</p>
+</div>
+</div>
+<div class="foot-bottom">
+<span>© 2026 Proactive Consultancy. All rights reserved.</span>
+<span>Carbon packs are a preparation aid via vsmecap, not statutory assurance, audit, or legal advice.</span>
+</div>
+</div>
+</footer>
+
+<!-- Floating Buttons -->
+<div class="float">
+<a class="wa" href="https://wa.me/447438572350" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978
